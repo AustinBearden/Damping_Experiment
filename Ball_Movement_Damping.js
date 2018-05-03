@@ -15,9 +15,12 @@ var ball = new CANNON.Body({
     mass: 5,
     position: new CANNON.Vec3(0, 0, 0),
     shape: new CANNON.Sphere(radius),
-    velocity: new CANNON.Vec3(24, 0, 0)
+    angularVelocity: new CANNON.Vec3(24, 34, 23)
 
 });
+
+ball.angularDamping = 0.4;
+
 // add the ball to my world
 world.addBody(ball);
 
