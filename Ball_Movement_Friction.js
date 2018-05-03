@@ -5,6 +5,12 @@
 // Organization: PhysicsFoosball
 // Filename: Ball_Movement_Friction.js
 
+// create an instance of the friction class
+var friction_funct = new CANNON.FrictionEquation(); 
+// but the above object at bottom of other object instantiations
+// That way we can use the other objects as inputs to
+// friction class object
+
 // build the world
 var world = new CANNON.World();
 world.gravity.set(0, 0, -9.82); // m/s^2
