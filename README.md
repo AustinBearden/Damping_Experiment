@@ -1,2 +1,2 @@
 # Damping_Experiment
-Learning how to use linear and rotational damping for ball movement
+Explore linear damping with the <a href="https://github.com/schteppe/cannon.js">CANNON.js</a> physics engine
