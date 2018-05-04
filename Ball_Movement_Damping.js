@@ -15,11 +15,11 @@ var ball = new CANNON.Body({
     mass: 5,
     position: new CANNON.Vec3(0, 0, 0),
     shape: new CANNON.Sphere(radius),
-    angularVelocity: new CANNON.Vec3(24, 34, 23)
+    velocity: new CANNON.Vec3(100, 100, 100) // velocity in m / s
 
 });
 
-ball.angularDamping = 0.4;
+ball.linearDamping = 1; // linear damping
 
 // add the ball to my world
 world.addBody(ball);
@@ -35,10 +35,10 @@ ground.addShape(ground_shape);
 // add plane to world
 world.addBody(ground);
 
-// now lets figure out time!
-for(i = 0; i <= 5; i++) {
-    world.step(1/4);
-    console.log("Sphere x position: " + ball.position.x);
-}
+console.log("BV: " + ball.velocity.x);
+
+world.step(1/5); // 0.5 seconds
+
+console.log("AV: " + ball.velocity.x);
 
 

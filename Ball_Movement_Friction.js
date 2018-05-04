@@ -5,11 +5,6 @@
 // Organization: PhysicsFoosball
 // Filename: Ball_Movement_Friction.js
 
-// create an instance of the friction class
-var friction_funct = new CANNON.FrictionEquation(); 
-// but the above object at bottom of other object instantiations
-// That way we can use the other objects as inputs to
-// friction class object
 
 // build the world
 var world = new CANNON.World();
@@ -22,11 +17,9 @@ var ball = new CANNON.Body({
     mass: 5,
     position: new CANNON.Vec3(0, 0, 0),
     shape: new CANNON.Sphere(radius),
-    angularVelocity: new CANNON.Vec3(24, 34, 23)
+    angularVelocity: new CANNON.Vec3(30, 30, 50)
 
 });
-
-ball.angularDamping = 0.4;
 
 // add the ball to my world
 world.addBody(ball);
@@ -42,10 +35,25 @@ ground.addShape(ground_shape);
 // add plane to world
 world.addBody(ground);
 
+
+// create an instance of the friction class
+var friction_funct = new CANNON.FrictionEquation(ball, ground, 8); 
+// but the above object at bottom of other object instantiations
+// That way we can use the other objects as inputs to
+// friction class object
+
+// how does the FrictionEqation work?
+
+
+// lets include a ContactMaterial class
+var contact = new CANNON.ContactMaterial(ball, ground, [friction = 0.5]);
+
 // now lets figure out time!
 for(i = 0; i <= 5; i++) {
     world.step(1/4);
     console.log("Sphere x position: " + ball.position.x);
 }
+
+console.log(friction_funct.computeGiMf());
 
 
