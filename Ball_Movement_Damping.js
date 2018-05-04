@@ -15,11 +15,11 @@ var ball = new CANNON.Body({
     mass: 5,
     position: new CANNON.Vec3(0, 0, 0),
     shape: new CANNON.Sphere(radius),
-    velocity: new CANNON.Vec3(100, 100, 100) // velocity in m / s
+    angularVelocity: new CANNON.Vec3(100, 100, 100) // velocity in m / s
 
 });
 
-ball.linearDamping = 1; // linear damping
+ball.angularDamping = 1.0; // linear damping
 
 // add the ball to my world
 world.addBody(ball);
@@ -35,10 +35,8 @@ ground.addShape(ground_shape);
 // add plane to world
 world.addBody(ground);
 
-console.log("BV: " + ball.velocity.x);
+console.log("BV: " + ball.angularVelocity.x);
 
 world.step(1/5); // 0.5 seconds
 
-console.log("AV: " + ball.velocity.x);
-
-
+console.log("AV: " + ball.angularVelocity.x);
